@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF49AF13-D768-41A0-B8A3-8866A3CFA269}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{61A2CF0A-7C03-48C9-BF35-7461ED1295C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrapper", "{76CB078C-0F53-46F7-A857-A834AFFF28D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{120DA900-9B35-4616-B2F9-80FA036B91E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Bootstrapper", "src\Bootstrapper\MelonPay.Bootstrapper\MelonPay.Bootstrapper.csproj", "{C348A031-4583-4052-9A83-4EF764210195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Shared.Abstractions", "src\Shared\MelonPay.Shared.Abstractions\MelonPay.Shared.Abstractions.csproj", "{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Shared.Infrastructure", "src\Shared\MelonPay.Shared.Infrastructure\MelonPay.Shared.Infrastructure.csproj", "{5806A449-16EB-479C-861E-236F0F7B5C80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Shared.Kernel", "src\Shared\MelonPay.Shared.Kernel\MelonPay.Shared.Kernel.csproj", "{160B11AB-A24B-4427-B569-412EE1DA27AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C348A031-4583-4052-9A83-4EF764210195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C348A031-4583-4052-9A83-4EF764210195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C348A031-4583-4052-9A83-4EF764210195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C348A031-4583-4052-9A83-4EF764210195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5806A449-16EB-479C-861E-236F0F7B5C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5806A449-16EB-479C-861E-236F0F7B5C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5806A449-16EB-479C-861E-236F0F7B5C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5806A449-16EB-479C-861E-236F0F7B5C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160B11AB-A24B-4427-B569-412EE1DA27AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160B11AB-A24B-4427-B569-412EE1DA27AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160B11AB-A24B-4427-B569-412EE1DA27AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160B11AB-A24B-4427-B569-412EE1DA27AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76CB078C-0F53-46F7-A857-A834AFFF28D3} = {AF49AF13-D768-41A0-B8A3-8866A3CFA269}
+		{120DA900-9B35-4616-B2F9-80FA036B91E1} = {AF49AF13-D768-41A0-B8A3-8866A3CFA269}
+		{C348A031-4583-4052-9A83-4EF764210195} = {76CB078C-0F53-46F7-A857-A834AFFF28D3}
+		{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C} = {120DA900-9B35-4616-B2F9-80FA036B91E1}
+		{5806A449-16EB-479C-861E-236F0F7B5C80} = {120DA900-9B35-4616-B2F9-80FA036B91E1}
+		{160B11AB-A24B-4427-B569-412EE1DA27AC} = {120DA900-9B35-4616-B2F9-80FA036B91E1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EEFA9D4-A6AB-44D8-BBD2-9B24B0821198}
+	EndGlobalSection
+EndGlobal
