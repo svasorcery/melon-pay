@@ -11,21 +11,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrappe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{120DA900-9B35-4616-B2F9-80FA036B91E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Bootstrapper", "src\Bootstrapper\MelonPay.Bootstrapper\MelonPay.Bootstrapper.csproj", "{C348A031-4583-4052-9A83-4EF764210195}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelonPay.Bootstrapper", "src\Bootstrapper\MelonPay.Bootstrapper\MelonPay.Bootstrapper.csproj", "{C348A031-4583-4052-9A83-4EF764210195}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Shared.Abstractions", "src\Shared\MelonPay.Shared.Abstractions\MelonPay.Shared.Abstractions.csproj", "{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelonPay.Shared.Abstractions", "src\Shared\MelonPay.Shared.Abstractions\MelonPay.Shared.Abstractions.csproj", "{1DFAEE59-189E-4DB4-9C5F-BA622E3DE17C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Shared.Infrastructure", "src\Shared\MelonPay.Shared.Infrastructure\MelonPay.Shared.Infrastructure.csproj", "{5806A449-16EB-479C-861E-236F0F7B5C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelonPay.Shared.Infrastructure", "src\Shared\MelonPay.Shared.Infrastructure\MelonPay.Shared.Infrastructure.csproj", "{5806A449-16EB-479C-861E-236F0F7B5C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Shared.Kernel", "src\Shared\MelonPay.Shared.Kernel\MelonPay.Shared.Kernel.csproj", "{160B11AB-A24B-4427-B569-412EE1DA27AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelonPay.Shared.Kernel", "src\Shared\MelonPay.Shared.Kernel\MelonPay.Shared.Kernel.csproj", "{160B11AB-A24B-4427-B569-412EE1DA27AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{56CDE3B8-28AB-4DE5-9BDD-872EA52870EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers", "Customers", "{7A4F071B-EE19-4980-AF58-0EB328E941BF}"
+	ProjectSection(SolutionItems) = preProject
+		Customers.rest = Customers.rest
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Modules.Customers.Api", "src\Modules\Customers\MelonPay.Modules.Customers.Api\MelonPay.Modules.Customers.Api.csproj", "{E5524E17-8C85-4037-938E-AAE5E18CE955}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelonPay.Modules.Customers.Api", "src\Modules\Customers\MelonPay.Modules.Customers.Api\MelonPay.Modules.Customers.Api.csproj", "{E5524E17-8C85-4037-938E-AAE5E18CE955}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonPay.Modules.Customers.Core", "src\Modules\Customers\MelonPay.Modules.Customers.Core\MelonPay.Modules.Customers.Core.csproj", "{4FCB2394-C159-4268-8444-D372B2FBB714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelonPay.Modules.Customers.Core", "src\Modules\Customers\MelonPay.Modules.Customers.Core\MelonPay.Modules.Customers.Core.csproj", "{4FCB2394-C159-4268-8444-D372B2FBB714}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
