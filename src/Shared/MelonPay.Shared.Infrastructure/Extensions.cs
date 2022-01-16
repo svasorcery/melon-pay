@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MelonPay.Shared.Abstractions.Time;
+using MelonPay.Shared.Infrastructure.Api;
 using MelonPay.Shared.Infrastructure.Time;
 using MelonPay.Shared.Infrastructure.Commands;
 using MelonPay.Shared.Infrastructure.Postgres;
@@ -16,7 +17,8 @@ namespace MelonPay.Shared.Infrastructure
             => services
                 .AddCommands()
                 .AddPostgres()
-                .AddSingleton<IClock, UtcClock>();
+                .AddSingleton<IClock, UtcClock>()
+                .AddApi();
 
         public static IApplicationBuilder UseModularInfrastructure(this IApplicationBuilder app)
             => app;
