@@ -16,9 +16,9 @@ namespace MelonPay.Shared.Kernel.ValueObjects
             Value = value;
         }
 
-        public static implicit operator FullName(string value) => new(value);
+        public static implicit operator FullName?(string value) => value is null ? null : new(value);
 
-        public static implicit operator string(FullName value) => value.Value;
+        public static implicit operator string?(FullName value) => value?.Value;
 
         public override string ToString() => Value;
     }

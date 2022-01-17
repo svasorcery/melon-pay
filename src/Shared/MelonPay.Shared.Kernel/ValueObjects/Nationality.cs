@@ -30,9 +30,9 @@ namespace MelonPay.Shared.Kernel.ValueObjects
             Value = value;
         }
 
-        public static implicit operator Nationality(string value) => new(value);
+        public static implicit operator Nationality?(string value) => value is null ? null : new(value);
 
-        public static implicit operator string(Nationality value) => value.Value;
+        public static implicit operator string?(Nationality value) => value?.Value;
 
         public override string ToString() => Value;
     }

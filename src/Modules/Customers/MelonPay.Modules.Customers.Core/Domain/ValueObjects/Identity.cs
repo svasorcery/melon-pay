@@ -36,9 +36,9 @@ namespace MelonPay.Modules.Customers.Core.Domain.ValueObjects
             Series = series;
         }
 
-        public static implicit operator Identity(string value) => From(value);
+        public static implicit operator Identity?(string value) => value is null ? null : From(value);
 
-        public static implicit operator string(Identity value) => $"{value.Type},{value.Series}";
+        public static implicit operator string?(Identity value) => value is null ? null : $"{value.Type},{value.Series}";
 
         public override string ToString() => $"{Type},{Series}";
 

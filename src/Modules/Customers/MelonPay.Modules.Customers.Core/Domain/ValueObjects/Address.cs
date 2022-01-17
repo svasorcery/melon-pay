@@ -16,9 +16,9 @@ namespace MelonPay.Modules.Customers.Core.Domain.ValueObjects
             Value = value.Trim();
         }
 
-        public static implicit operator Address(string value) => new(value);
+        public static implicit operator Address?(string value) => value is null ? null : new(value);
 
-        public static implicit operator string(Address value) => value.Value;
+        public static implicit operator string?(Address value) => value?.Value;
 
         public override string ToString() => Value;
     }

@@ -34,9 +34,9 @@ namespace MelonPay.Shared.Kernel.ValueObjects
             Value = value;
         }
 
-        public static implicit operator Email(string email) => new(email);
+        public static implicit operator Email?(string value) => value is null ? null : new(value);
 
-        public static implicit operator string(Email email) => email.Value;
+        public static implicit operator string?(Email value) => value?.Value;
 
         public override string ToString() => Value;
     }

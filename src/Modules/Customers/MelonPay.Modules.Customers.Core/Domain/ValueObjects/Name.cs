@@ -16,9 +16,9 @@ namespace MelonPay.Modules.Customers.Core.Domain.ValueObjects
             Value = value.Trim().ToLowerInvariant().Replace(" ", ".");
         }
 
-        public static implicit operator Name(string value) => new(value);
+        public static implicit operator Name?(string value) => value is null ? null : new(value);
 
-        public static implicit operator string(Name value) => value.Value;
+        public static implicit operator string?(Name value) => value?.Value;
 
         public override string ToString() => Value;
     }
