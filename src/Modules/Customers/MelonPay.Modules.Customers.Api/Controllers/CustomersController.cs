@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MelonPay.Shared.Abstractions.Commands;
-using MelonPay.Shared.Abstractions.Queries;
+using MelonPay.Shared.Abstractions.Dispatchers;
 using MelonPay.Modules.Customers.Core.Commands;
 using MelonPay.Modules.Customers.Core.Queries;
 
@@ -10,19 +9,17 @@ namespace MelonPay.Modules.Customers.Api.Controllers
     [Route("[controller]")]
     internal class CustomersController : ControllerBase
     {
-        private readonly ICommandDispatcher _commandDispatcher;
-        private readonly IQueryDispatcher _queryDispatcher;
+        private readonly IDispatcher _dispatcher;
 
-        public CustomersController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
+        public CustomersController(IDispatcher dispatcher)
         {
-            _commandDispatcher = commandDispatcher;
-            _queryDispatcher = queryDispatcher;
+            _dispatcher = dispatcher;
         }
 
         [HttpGet("{customerId:guid}")]
         public async Task<IActionResult> Get([FromRoute] GetCustomer query)
         {
-            var customer = await _queryDispatcher.QueryAsync(query);
+            var customer = await _dispatcher.QueryAsync(query);
 
             if (customer is null)
             {
@@ -36,7 +33,7 @@ namespace MelonPay.Modules.Customers.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateCustomer command)
         {
-            await _commandDispatcher.SendAsync(command);
+            await _dispatcher.SendAsync(command);
             return Accepted();
         }
     }
