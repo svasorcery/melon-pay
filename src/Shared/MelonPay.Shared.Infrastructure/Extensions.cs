@@ -6,6 +6,7 @@ using MelonPay.Shared.Abstractions.Time;
 using MelonPay.Shared.Infrastructure.Api;
 using MelonPay.Shared.Infrastructure.Time;
 using MelonPay.Shared.Infrastructure.Commands;
+using MelonPay.Shared.Infrastructure.Queries;
 using MelonPay.Shared.Infrastructure.Postgres;
 
 [assembly: InternalsVisibleTo("MelonPay.Bootstrapper")]
@@ -16,6 +17,7 @@ namespace MelonPay.Shared.Infrastructure
         public static IServiceCollection AddModularInfrastructure(this IServiceCollection services)
             => services
                 .AddCommands()
+                .AddQueries()
                 .AddPostgres()
                 .AddSingleton<IClock, UtcClock>()
                 .AddApi();
