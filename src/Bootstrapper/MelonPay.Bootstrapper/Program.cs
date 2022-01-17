@@ -2,6 +2,7 @@ using MelonPay.Shared.Infrastructure;
 using MelonPay.Shared.Infrastructure.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.ConfigureModules();
 
 var configuration = builder.Configuration;
 var environment = builder.Environment;
@@ -17,6 +18,10 @@ foreach (var module in modules)
 }
 
 var app = builder.Build();
+
+var logger = app.Logger;
+
+logger.LogInformation($"Modules: {string.Join(", ", modules.Select(x => x.Name))}");
 
 app.UseModularInfrastructure();
 app.UseHttpsRedirection();

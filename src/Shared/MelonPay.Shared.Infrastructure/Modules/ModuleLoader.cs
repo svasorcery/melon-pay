@@ -8,20 +8,24 @@ namespace MelonPay.Shared.Infrastructure.Modules
     {
         public static IList<Assembly> LoadAssemblies(IConfiguration configuration)
         {
+            const string ModulePart = "MelonPay.Modules.";
+
             var assemblies = AppDomain.CurrentDomain
                 .GetAssemblies()
                 .ToList();
 
-            var locations = assemblies
-                .Where(x => !x.IsDynamic)
-                .Select(x => x.Location)
-                .ToArray();
+            var files = GetModuleFiles(assemblies);
 
-            var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
-                .Where(x => !locations.Contains(x, StringComparer.InvariantCultureIgnoreCase))
-                .ToList();
+            var disabledModules = GetDisabledModules(files, ModulePart, configuration);
+            foreach (var disabledModule in disabledModules)
+            {
+                files.Remove(disabledModule);
+            }
 
-            files.ForEach(x => assemblies.Add(AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(x))));
+            foreach (var file in files)
+            {
+                assemblies.Add(AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(file)));
+            }
 
             return assemblies;
         }
@@ -34,5 +38,41 @@ namespace MelonPay.Shared.Infrastructure.Modules
                 .Select(Activator.CreateInstance)
                 .Cast<IModule>()
                 .ToList();
+
+
+        private static List<string> GetModuleFiles(IEnumerable<Assembly> assemblies)
+        {
+            var locations = assemblies
+                .Where(x => !x.IsDynamic)
+                .Select(x => x.Location)
+                .ToArray();
+
+            var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
+                .Where(x => !locations.Contains(x, StringComparer.InvariantCultureIgnoreCase))
+                .ToList();
+
+            return files;
+        }
+
+        private static List<string> GetDisabledModules(IEnumerable<string> files, string modulePart, IConfiguration configuration)
+        {
+            var disabledModules = new List<string>();
+            foreach (var file in files)
+            {
+                if (!file.Contains(modulePart))
+                {
+                    continue;
+                }
+
+                var moduleName = file.Split(modulePart)[1].Split(".")[0].ToLowerInvariant();
+                var enabled = configuration.GetValue<bool>($"{moduleName}:module:enabled");
+                if (!enabled)
+                {
+                    disabledModules.Add(file);
+                }
+            }
+
+            return disabledModules;
+        }
     }
 }
