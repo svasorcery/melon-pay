@@ -10,4 +10,10 @@
     <ProjectReference Include="..\MelonPay.Modules.Customers.Core\MelonPay.Modules.Customers.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Resource Include="modules.customers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>
