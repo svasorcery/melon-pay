@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,10 +16,10 @@ namespace MelonPay.Shared.Infrastructure
 {
     internal static class Extensions
     {
-        public static IServiceCollection AddModularInfrastructure(this IServiceCollection services)
+        public static IServiceCollection AddModularInfrastructure(this IServiceCollection services, IList<Assembly> assemblies)
             => services
-                .AddCommands()
-                .AddQueries()
+                .AddCommands(assemblies)
+                .AddQueries(assemblies)
                 .AddDispatchers()
                 .AddPostgres()
                 .AddSingleton<IClock, UtcClock>()
