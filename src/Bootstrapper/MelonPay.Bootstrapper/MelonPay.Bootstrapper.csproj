@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Customers\MelonPay.Modules.Customers.Api\MelonPay.Modules.Customers.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Users\MelonPay.Modules.Users.Api\MelonPay.Modules.Users.Api.csproj" />
     <ProjectReference Include="..\..\Shared\MelonPay.Shared.Infrastructure\MelonPay.Shared.Infrastructure.csproj" />
   </ItemGroup>
 
