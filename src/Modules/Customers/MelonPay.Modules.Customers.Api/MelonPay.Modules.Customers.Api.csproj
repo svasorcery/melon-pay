@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MelonPay.Modules.Customers.Core\MelonPay.Modules.Customers.Core.csproj" />
+    <None Remove="modules.customers.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="modules.customers.json">
+    <Content Include="modules.customers.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MelonPay.Modules.Customers.Core\MelonPay.Modules.Customers.Core.csproj" />
   </ItemGroup>
 
 </Project>
