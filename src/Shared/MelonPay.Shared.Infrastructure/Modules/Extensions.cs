@@ -1,11 +1,13 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MelonPay.Shared.Abstractions.Modules;
 using MelonPay.Shared.Infrastructure.Modules.Registry;
 
 namespace MelonPay.Shared.Infrastructure.Modules
 {
-    internal static class Extensions
+    public static class Extensions
     {
         public static IHostBuilder ConfigureModules(this IHostBuilder builder)
             => builder.ConfigureAppConfiguration((ctx, cfg) =>
@@ -24,6 +26,10 @@ namespace MelonPay.Shared.Infrastructure.Modules
 
         internal static IServiceCollection AddModuleRequests(this IServiceCollection services)
             => services
-                .AddSingleton<IModuleRegistry, ModuleRegistry>();
+                .AddSingleton<IModuleRegistry, ModuleRegistry>()
+                .AddSingleton<IModuleSubscriber, ModuleSubscriber>();
+
+        public static IModuleSubscriber UseModuleRequests(this IApplicationBuilder app)
+            => app.ApplicationServices.GetRequiredService<IModuleSubscriber>();
     }
 }
