@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MelonPay.Shared.Abstractions.Dispatchers;
+using MelonPay.Shared.Abstractions.Queries.Pagination;
 
 namespace MelonPay.Shared.Infrastructure.Api
 {
@@ -14,6 +15,11 @@ namespace MelonPay.Shared.Infrastructure.Api
         {
             Dispatcher = dispatcher;
         }
+
+        protected ActionResult<Paged<T>> PagedOrNoContent<T>(Paged<T>? paged)
+            => paged is not null && !paged.IsEmpty
+                ? Ok(paged)
+                : NoContent();
 
         protected IActionResult SingleOrNotFound<T>(T? model)
             => model is not null
