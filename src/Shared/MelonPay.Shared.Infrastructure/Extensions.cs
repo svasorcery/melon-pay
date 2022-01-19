@@ -6,9 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using MelonPay.Shared.Abstractions.Time;
 using MelonPay.Shared.Infrastructure.Api;
 using MelonPay.Shared.Infrastructure.Time;
+using MelonPay.Shared.Infrastructure.Modules;
+using MelonPay.Shared.Infrastructure.Postgres;
 using MelonPay.Shared.Infrastructure.Commands;
 using MelonPay.Shared.Infrastructure.Queries;
-using MelonPay.Shared.Infrastructure.Postgres;
 using MelonPay.Shared.Infrastructure.Dispatchers;
 
 [assembly: InternalsVisibleTo("MelonPay.Bootstrapper")]
@@ -23,6 +24,7 @@ namespace MelonPay.Shared.Infrastructure
                 .AddDispatchers()
                 .AddPostgres()
                 .AddSingleton<IClock, UtcClock>()
+                .AddModuleRequests()
                 .AddApi();
 
         public static IApplicationBuilder UseModularInfrastructure(this IApplicationBuilder app)

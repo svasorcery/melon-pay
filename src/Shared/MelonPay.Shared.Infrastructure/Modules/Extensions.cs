@@ -29,7 +29,8 @@ namespace MelonPay.Shared.Infrastructure.Modules
             => services
                 .AddSingleton<IModuleRegistry, ModuleRegistry>()
                 .AddSingleton<IModuleSubscriber, ModuleSubscriber>()
-                .AddSingleton<IModuleSerializer, JsonModuleSerializer>();
+                .AddSingleton<IModuleSerializer, JsonModuleSerializer>()
+                .AddSingleton<IModuleClient, ModuleClient>();
 
         public static IModuleSubscriber UseModuleRequests(this IApplicationBuilder app)
             => app.ApplicationServices.GetRequiredService<IModuleSubscriber>();
