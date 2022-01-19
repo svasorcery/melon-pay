@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using MelonPay.Shared.Infrastructure.Modules.Registry;
 
 namespace MelonPay.Shared.Infrastructure.Modules
 {
@@ -19,5 +21,9 @@ namespace MelonPay.Shared.Infrastructure.Modules
                         $"modules.{pattern}.json",
                         SearchOption.AllDirectories);
             });
+
+        internal static IServiceCollection AddModuleRequests(this IServiceCollection services)
+            => services
+                .AddSingleton<IModuleRegistry, ModuleRegistry>();
     }
 }
