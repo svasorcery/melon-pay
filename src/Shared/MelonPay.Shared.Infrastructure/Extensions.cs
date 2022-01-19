@@ -9,6 +9,7 @@ using MelonPay.Shared.Infrastructure.Time;
 using MelonPay.Shared.Infrastructure.Modules;
 using MelonPay.Shared.Infrastructure.Postgres;
 using MelonPay.Shared.Infrastructure.Commands;
+using MelonPay.Shared.Infrastructure.Events;
 using MelonPay.Shared.Infrastructure.Queries;
 using MelonPay.Shared.Infrastructure.Dispatchers;
 
@@ -20,6 +21,7 @@ namespace MelonPay.Shared.Infrastructure
         public static IServiceCollection AddModularInfrastructure(this IServiceCollection services, IList<Assembly> assemblies)
             => services
                 .AddCommands(assemblies)
+                .AddEvents(assemblies)
                 .AddQueries(assemblies)
                 .AddDispatchers()
                 .AddPostgres()
