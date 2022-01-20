@@ -25,7 +25,7 @@ namespace MelonPay.Shared.Infrastructure
                 .AddDispatchers()
                 .AddPostgres()
                 .AddSingleton<IClock, UtcClock>()
-                .AddModuleRequests()
+                .AddModuleRequests(assemblies)
                 .AddApi();
 
         public static IApplicationBuilder UseModularInfrastructure(this IApplicationBuilder app)
