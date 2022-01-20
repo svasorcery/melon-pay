@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using MelonPay.Shared.Abstractions.Time;
-using MelonPay.Shared.Abstractions.Modules;
 using MelonPay.Shared.Abstractions.Commands;
+using MelonPay.Shared.Abstractions.Messaging;
 using MelonPay.Modules.Users.Core.Events;
 using MelonPay.Modules.Users.Core.Exceptions;
 using MelonPay.Modules.Users.Core.Domain.Entities;
@@ -16,7 +16,7 @@ namespace MelonPay.Modules.Users.Core.Commands.Handlers
         private readonly IRoleRepository _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly RegistrationOptions _registrationOptions;
-        private readonly IModuleClient _moduleClient;
+        private readonly IMessageBroker _messageBroker;
         private readonly IClock _clock;
         private readonly ILogger<SignUpHandler> _logger;
 
@@ -25,7 +25,7 @@ namespace MelonPay.Modules.Users.Core.Commands.Handlers
             IRoleRepository roleRepository,
             IPasswordHasher<User> passwordHasher,
             RegistrationOptions registrationOptions,
-            IModuleClient moduleClient,
+            IMessageBroker messageBroker,
             IClock clock,
             ILogger<SignUpHandler> logger
             )
@@ -34,7 +34,7 @@ namespace MelonPay.Modules.Users.Core.Commands.Handlers
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
             _registrationOptions = registrationOptions;
-            _moduleClient = moduleClient;
+            _messageBroker = messageBroker;
             _clock = clock;
             _logger = logger;
         }
@@ -84,7 +84,7 @@ namespace MelonPay.Modules.Users.Core.Commands.Handlers
             };
 
             await _userRepository.UpdateAsync(user);
-            await _moduleClient.PublishAsync(new SignedUp(user.Id, user.Email, user.Role.Name), cancellationToken);
+            await _messageBroker.PublishAsync(new SignedUp(user.Id, user.Email, user.Role.Name), cancellationToken);
             _logger.LogInformation($"User with ID: '{user.Id}' has signed up.");
         }
     }
