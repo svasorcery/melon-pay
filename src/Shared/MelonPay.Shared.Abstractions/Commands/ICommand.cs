@@ -1,7 +1,9 @@
-﻿namespace MelonPay.Shared.Abstractions.Commands
+﻿using MelonPay.Shared.Abstractions.Messaging;
+
+namespace MelonPay.Shared.Abstractions.Commands
 {
     // Marker
-    public interface ICommand
+    public interface ICommand : IMessage
     {
     }
 }

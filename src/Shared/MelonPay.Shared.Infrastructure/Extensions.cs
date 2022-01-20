@@ -10,6 +10,7 @@ using MelonPay.Shared.Infrastructure.Postgres;
 using MelonPay.Shared.Infrastructure.Commands;
 using MelonPay.Shared.Infrastructure.Events;
 using MelonPay.Shared.Infrastructure.Queries;
+using MelonPay.Shared.Infrastructure.Messaging;
 using MelonPay.Shared.Infrastructure.Dispatchers;
 
 [assembly: InternalsVisibleTo("MelonPay.Bootstrapper")]
@@ -22,6 +23,7 @@ namespace MelonPay.Shared.Infrastructure
                 .AddCommands(assemblies)
                 .AddEvents(assemblies)
                 .AddQueries(assemblies)
+                .AddMessaging()
                 .AddDispatchers()
                 .AddPostgres()
                 .AddSingleton<IClock, UtcClock>()

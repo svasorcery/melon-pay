@@ -1,7 +1,9 @@
-﻿namespace MelonPay.Shared.Abstractions.Events
+﻿using MelonPay.Shared.Abstractions.Messaging;
+
+namespace MelonPay.Shared.Abstractions.Events
 {
     // Marker
-    public interface IEvent
+    public interface IEvent : IMessage
     {
     }
 }
