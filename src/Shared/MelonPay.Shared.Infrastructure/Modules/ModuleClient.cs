@@ -29,6 +29,23 @@ namespace MelonPay.Shared.Infrastructure.Modules
             return result is null ? null : TranslateType<TResult>(result);
         }
 
+        public async Task PublishAsync(object message, CancellationToken cancellationToken = default)
+        {
+            var key = message.GetType().Name;
+            var registrations = _moduleRegistry
+                .GetBroadcastRegistrations(key)
+                .Where(x => x.ReceiverType != message.GetType());
+
+            var tasks = new List<Task>();
+            foreach (var registration in registrations)
+            {
+                var receiverMessage = TranslateType(message, registration.ReceiverType);
+                tasks.Add(registration.Action(receiverMessage, cancellationToken));
+            }
+
+            await Task.WhenAll(tasks);
+        }
+
         private T TranslateType<T>(object value)
             => _moduleSerializer.Deserialize<T>(_moduleSerializer.Serialize(value));
 
