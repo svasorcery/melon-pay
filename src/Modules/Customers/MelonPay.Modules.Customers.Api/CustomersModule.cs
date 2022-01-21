@@ -1,8 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using MelonPay.Modules.Customers.Core;
 using MelonPay.Shared.Abstractions.Modules;
+using MelonPay.Shared.Infrastructure.Contracts;
+using MelonPay.Modules.Customers.Core;
+using MelonPay.Modules.Customers.Core.Events.External;
 
 [assembly: InternalsVisibleTo("MelonPay.Bootstrapper")]
 namespace MelonPay.Modules.Customers.Api
@@ -18,6 +20,8 @@ namespace MelonPay.Modules.Customers.Api
 
         public void Use(IApplicationBuilder app)
         {
+            app.UseContracts()
+                .Register<SignedUpContract>();
         }
     }
 }
