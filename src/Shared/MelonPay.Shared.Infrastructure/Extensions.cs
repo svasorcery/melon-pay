@@ -11,6 +11,7 @@ using MelonPay.Shared.Infrastructure.Commands;
 using MelonPay.Shared.Infrastructure.Events;
 using MelonPay.Shared.Infrastructure.Queries;
 using MelonPay.Shared.Infrastructure.Messaging;
+using MelonPay.Shared.Infrastructure.Contracts;
 using MelonPay.Shared.Infrastructure.Dispatchers;
 
 [assembly: InternalsVisibleTo("MelonPay.Bootstrapper")]
@@ -28,6 +29,7 @@ namespace MelonPay.Shared.Infrastructure
                 .AddPostgres()
                 .AddSingleton<IClock, UtcClock>()
                 .AddModuleRequests(assemblies)
+                .AddContracts()
                 .AddApi();
 
         public static IApplicationBuilder UseModularInfrastructure(this IApplicationBuilder app)

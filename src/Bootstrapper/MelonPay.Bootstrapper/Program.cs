@@ -1,5 +1,6 @@
 using MelonPay.Shared.Infrastructure;
 using MelonPay.Shared.Infrastructure.Modules;
+using MelonPay.Shared.Infrastructure.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureModules();
@@ -25,11 +26,11 @@ logger.LogInformation($"Modules: {string.Join(", ", modules.Select(x => x.Name))
 
 app.UseModularInfrastructure();
 app.UseHttpsRedirection();
-app.UseRouting();
 foreach (var module in modules)
 {
     module.Use(app);
 }
+app.ValidateContracts(assemblies);
 app.UseAuthorization();
 app.MapControllers();
 app.MapGet("/", () => "MelonPay API");
