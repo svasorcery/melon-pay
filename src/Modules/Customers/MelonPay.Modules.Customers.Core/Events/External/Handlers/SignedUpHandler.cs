@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MelonPay.Shared.Abstractions.Time;
 using MelonPay.Shared.Abstractions.Events;
+using MelonPay.Modules.Customers.Core.Exceptions;
 using MelonPay.Modules.Customers.Core.Domain.Entities;
 using MelonPay.Modules.Customers.Core.Domain.Repositories;
 
@@ -27,9 +28,15 @@ namespace MelonPay.Modules.Customers.Core.Events.External.Handlers
                 return;
             }
 
-            var customer = new Customer(@event.UserId, @event.Email, _clock.CurrentDate());
+            var customerId = @event.UserId;
+            if (await _customerRepository.GetAsync(customerId) is not null)
+            {
+                throw new CustomerAlreadyExistsException(customerId);
+            }
+
+            var customer = new Customer(customerId, @event.Email, _clock.CurrentDate());
             await _customerRepository.AddAsync(customer);
-            _logger.LogInformation($"Created a new customer based on user with ID: '{@event.UserId}'.");
+            _logger.LogInformation($"Created a customer with ID: '{customer.Id}'");
         }
     }
 }
