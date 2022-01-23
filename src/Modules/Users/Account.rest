@@ -1,0 +1,16 @@
+@url = https://localhost:44377/account
+@userId = 1daa740a-80a6-4b63-b4a3-f3daef7629f8
+
+###
+POST {{url}}
+Content-Type: application/json
+
+{
+  "email": "user1@melonpay.io"
+}
+
+###
+GET {{url}}
+
+###
+POST {{url}}/sign-up
